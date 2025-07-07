@@ -17,6 +17,7 @@
 - [Data Privacy](#data-privacy)
 - [Customizations](#customizations)
 - [Planned Features](#planned-features)
+- [Additional Features](#additional-features)
 - [License](#license)
 
 ---
@@ -87,6 +88,7 @@ MindMate/
 ├── auth-script.js      # Login/register logic (validations, session, UI)
 ├── style.css           # Global styles (dashboard, mood tracking, etc.)
 ├── auth-style.css      # Auth form styles (login/register forms)
+├── extras.js           # Optional add-on features (dark mode, export)
 ├── README.md           # Documentation (you are here)
 ```
 
@@ -158,15 +160,37 @@ Customize gradients, accent colors, and animations via:
 
 ---
 
+## 🧩 Additional Features
+
+### 📥 Mood Data Export
+- Exports mood entries to a `.csv` file using localStorage.
+- Easily share trends with professionals or track personally.
+
+### 🌓 Dark Mode Toggle
+- Enhances accessibility and visual comfort.
+- User preference saved in localStorage for consistent experience.
+
+### ⏰ Auto Wellness Reminders
+- Gentle pop-up nudges every 5 minutes of inactivity.
+- Encourages regular check-ins and mindful breaks.
+
+### 🔧 Easy Integration
+- Encapsulated in `extras.js`, which can be loaded optionally.
+- UI buttons like:
+```html
+<button onclick="exportMoodData()">Export Data</button>
+<button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+```
+
+---
+
 ## 📸 Screenshots
 
-
-![Login](images\login.png)
-![Welcome page](images\welcome.png)
-![Mood tracker](images\moodtracker.png)
-![Reflection](images\reflection.png)
-![Insight](images\insight.png)
-
+![Login](images/login.png)
+![Welcome page](images/welcome.png)
+![Mood tracker](images/moodtracker.png)
+![Reflection](images/reflection.png)
+![Insight](images/insight.png)
 
 ---
 
