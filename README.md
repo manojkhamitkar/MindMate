@@ -160,7 +160,12 @@ Customize gradients, accent colors, and animations via:
 
 ## 📸 Screenshots
 
-![alt text](login.png)
+
+![Login Page](image\login.png)
+![Welcome Page](image\welcome.png)
+![Mood Tracker](image\moodtracker.png)
+![Reflections](image\reflection.png)
+![Insights](image\insight.png)
 
 ---
 
