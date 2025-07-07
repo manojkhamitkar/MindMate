@@ -187,7 +187,8 @@ Customize gradients, accent colors, and animations via:
 ## 📸 Screenshots
 
 ![Login](images/login.png)
-![Welcome page](images/welcome.png)
+![Welcome page](https://github.com/user-attachments/assets/1e4d2c2f-44fa-4c6c-9d18-f32952f26912)
+
 ![Mood tracker](images/moodtracker.png)
 ![Reflection](images/reflection.png)
 ![Insight](images/insight.png)
