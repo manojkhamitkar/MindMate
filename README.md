@@ -186,12 +186,14 @@ Customize gradients, accent colors, and animations via:
 
 ## 📸 Screenshots
 
-![Login](images/login.png)
+
 ![Welcome page](https://github.com/user-attachments/assets/1e4d2c2f-44fa-4c6c-9d18-f32952f26912)
 
-![Mood tracker](images/moodtracker.png)
-![Reflection](images/reflection.png)
-![Insight](images/insight.png)
+![Mood tracker](https://github.com/user-attachments/assets/69cc8b95-7fca-4ce5-9140-4e25da67a62d)
+
+
+![Insight](https://github.com/user-attachments/assets/57ea5c97-9c30-407b-8d37-75cd7aa3aa9f)
+
 
 ---
 
