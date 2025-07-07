@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate - Enhanced Real-time Mental Wellness Companion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Header with Real-time Status -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heart pulse"></i>
+                <span>MindMate</span>
+                
+                <div class="live-indicator">
+                    <div class="live-dot"></div>
+                    <span>LIVE</span>
+                </div>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <i class="fas fa-home"></i> Dashboard
+                </button>
+                <button class="nav-btn" data-tab="mood-tracker">
+                    <i class="fas fa-chart-line"></i> Mood Tracker
+                </button>
+                <button class="nav-btn" data-tab="reflection">
+                    <i class="fas fa-book"></i> Reflection
+                </button>
+                <button class="nav-btn" data-tab="insights">
+                    <i class="fas fa-brain"></i> Insights
+                </button>
+            </nav>
+        </header>
+
+        <!-- Enhanced Dashboard Tab -->
+        <div class="tab-content active" id="dashboard">
+            <div class="welcome-section">
+                <h1>Welcome back, <span id="loggedInUserName">Guest</span> 👋</h1>
+
+                
+
+                <div class="mood-streak" id="moodStreak">
+                    <span>🔥 Day 1 streak!</span>
+                </div>
+                <div class="quick-mood-check">
+                    
+                    <div class="mood-options">
+                        <button class="mood-btn" data-mood="great" data-value="5">😊 Great</button>
+                        <button class="mood-btn" data-mood="good" data-value="4">🙂 Good</button>
+                        <button class="mood-btn" data-mood="okay" data-value="3">😐 Okay</button>
+                        <button class="mood-btn" data-mood="down" data-value="2">😔 Down</button>
+                        <button class="mood-btn" data-mood="stressed" data-value="1">😰 Stressed</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Mood Trend <span class="live-badge">LIVE</span></h3>
+                    <div class="mood-chart">
+                        <canvas id="moodChart"></canvas>
+                    </div>
+                    <div class="chart-summary" id="chartSummary">
+                        <span class="trend-indicator" id="trendIndicator">📈 Stable</span>
+                    </div>
+                </div>
+                
+                <div class="card insight-card">
+                    <h3><i class="fas fa-lightbulb"></i> Smart Insight</h3>
+                    <div class="insight-content" id="smartInsight">
+                        <p id="dailyInsight">Starting your wellness journey! Every mood entry helps build better self-awareness.</p>
+                        <div class="insight-actions">
+                            <button class="insight-btn" onclick="generatePersonalizedTip()">
+                                <i class="fas fa-magic"></i> Get Tip
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card actions-card">
+                    <h3><i class="fas fa-heart-pulse"></i> Wellness Actions</h3>
+                    <div class="action-suggestions">
+                        <div class="action-item" data-action="breathing">
+                            <i class="fas fa-lungs"></i>
+                            <div class="action-content">
+                                <span>5-minute breathing exercise</span>
+                                <small>Reduce stress instantly</small>
+                            </div>
+                            <button class="action-btn">Start</button>
+                        </div>
+                        <div class="action-item" data-action="walk">
+                            <i class="fas fa-walking"></i>
+                            <div class="action-content">
+                                <span>Mindful walk</span>
+                                <small>Boost your mood naturally</small>
+                            </div>
+                            <button class="action-btn">Plan</button>
+                        </div>
+                        <div class="action-item" data-action="gratitude">
+                            <i class="fas fa-heart"></i>
+                            <div class="action-content">
+                                <span>Gratitude practice</span>
+                                <small>Focus on the positive</small>
+                            </div>
+                            <button class="action-btn">Begin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Mood Tracker Tab -->
+        <div class="tab-content" id="mood-tracker">
+            <div class="mood-tracker-section">
+                <h2>Track Your Mood <span class="real-time-badge">Real-time</span></h2>
+                <div class="mood-entry">
+                    <div class="mood-scale-container">
+                        <h3>How do you feel right now?</h3>
+                        <div class="mood-scale">
+                            <div class="scale-labels">
+                                <span>Very Low</span>
+                                <span>Low</span>
+                                <span>Neutral</span>
+                                <span>Good</span>
+                                <span>Very Good</span>
+                            </div>
+                            <div class="scale-slider">
+                                <input type="range" id="moodSlider" min="1" max="5" value="3">
+                                <div class="mood-emoji" id="moodEmoji">😐</div>
+                                <div class="mood-value" id="moodValue">3/5</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mood-factors">
+                        <h4>What's influencing your mood? <span class="optional">(Select multiple)</span></h4>
+                        <div class="factor-tags">
+                            <span class="tag" data-factor="work">💼 Work</span>
+                            <span class="tag" data-factor="relationships">❤️ Relationships</span>
+                            <span class="tag" data-factor="health">🏥 Health</span>
+                            <span class="tag" data-factor="sleep">😴 Sleep</span>
+                            <span class="tag" data-factor="exercise">🏃 Exercise</span>
+                            <span class="tag" data-factor="weather">🌤️ Weather</span>
+                            <span class="tag" data-factor="finances">💰 Finances</span>
+                            <span class="tag" data-factor="social">👥 Social</span>
+                        </div>
+                    </div>
+
+                    <div class="mood-notes">
+                        <h4>Optional Notes <span class="private-badge">🔒 Private</span></h4>
+                        <textarea id="moodNotes" placeholder="Share what's on your mind... Your thoughts are completely private and secure."></textarea>
+                        <div class="character-count">
+                            <span id="charCount">0</span>/500 characters
+                        </div>
+                    </div>
+
+                    <button class="submit-btn enhanced" onclick="saveMoodEntry()">
+                        <i class="fas fa-save"></i> Save Entry
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Reflection Tab -->
+        <div class="tab-content" id="reflection">
+            <div class="reflection-section">
+                <h2>Guided Reflection <span class="mindful-badge">🧘‍♀️ Mindful</span></h2>
+                <div class="reflection-prompt">
+                    <h3>Today's Reflection Prompt</h3>
+                    <div class="prompt-card">
+                        <div class="prompt-icon">💭</div>
+                        <p id="reflectionPrompt">What are three things you're grateful for today, no matter how small?</p>
+                        <button class="new-prompt-btn" onclick="generateNewPrompt()">
+                            <i class="fas fa-sync-alt"></i> New Prompt
+                        </button>
+                    </div>
+                </div>
+
+                <div class="reflection-response">
+                    <h4>Your Reflection</h4>
+                    <div class="writing-area">
+                        <textarea id="reflectionText" placeholder="Take your time to reflect deeply... Let your thoughts flow freely."></textarea>
+                        <div class="writing-stats">
+                            <span id="wordCount">0 words</span>
+                            <span id="readingTime">~0 min read</span>
+                        </div>
+                    </div>
+                    <button class="submit-btn enhanced" onclick="saveReflection()">
+                        <i class="fas fa-feather"></i> Save Reflection
+                        <div class="btn-ripple"></div>
+                    </button>
+                </div>
+
+                <div class="past-reflections">
+                    <h3>Recent Reflections <span class="count-badge" id="reflectionCountBadge">0</span></h3>
+                    <div id="reflectionHistory" class="reflection-history">
+                        <div class="empty-state">
+                            <i class="fas fa-book-open"></i>
+                            <p>No reflections yet. Start your first reflection above!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Insights Tab -->
+        <div class="tab-content" id="insights">
+            <div class="insights-section">
+                <h2>Your Wellness Insights <span class="ai-badge">🤖 AI-Powered</span></h2>
+                
+                <div class="insight-cards">
+                    <div class="insight-card weekly-card">
+                        <h3><i class="fas fa-calendar-week"></i> Weekly Overview</h3>
+                        <div class="weekly-summary">
+                            <div class="summary-item highlight">
+                                <div class="summary-icon">📊</div>
+                                <div class="summary-content">
+                                    <span class="label">Average Mood</span>
+                                    <span class="value" id="averageMood">0/5</span>
+                                </div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-icon">📝</div>
+                                <div class="summary-content">
+                                    <span class="label">Mood Entries</span>
+                                    <span class="value" id="moodEntries">0</span>
+                                </div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-icon">💭</div>
+                                <div class="summary-content">
+                                    <span class="label">Reflections</span>
+                                    <span class="value" id="reflectionCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card patterns-card">
+                        <h3><i class="fas fa-brain"></i> Smart Patterns</h3>
+                        <div class="patterns-list" id="patternsList">
+                            <div class="pattern-item positive">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Start tracking to discover patterns!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card recommendations-card">
+                        <h3><i class="fas fa-lightbulb"></i> Personalized Tips</h3>
+                        <div class="recommendations" id="recommendationsList">
+                            <div class="recommendation-item">
+                                <i class="fas fa-star"></i>
+                                <div>
+                                    <strong>Welcome to MindMate!</strong>
+                                    <p>Start by tracking your mood daily to unlock personalized insights and recommendations.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Breathing Exercise Modal -->
+    <div id="breathingModal" class="modal enhanced">
+        <div class="modal-content breathing-modal">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-lungs"></i> Guided Breathing Exercise</h2>
+            <div class="breathing-exercise">
+                <div class="breathing-circle" id="breathingCircle">
+                    <div class="inner-circle"></div>
+                    <div class="breath-text" id="breathText">Ready</div>
+                </div>
+                <div class="breathing-instructions" id="breathingInstructions">
+                    Take a comfortable position and click start when ready
+                </div>
+                <div class="breathing-progress" id="breathingProgress">
+                    <div class="progress-bar"></div>
+                    <span class="cycle-count">Cycle 1 of 5</span>
+                </div>
+                <button id="startBreathing" class="start-btn enhanced">
+                    <i class="fas fa-play"></i> Start Exercise
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real-time Status Bar -->
+    <div class="status-bar" id="statusBar">
+        <div class="status-items">
+            <div class="status-item">
+                <div class="status-dot online"></div>
+                <span id="connectionStatus">Connected</span>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-save"></i>
+                <span id="lastSaved">Auto-saved</span>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-database"></i>
+                <span id="dataCount">0 entries</span>
+            </div>
+            <div class="status-item">
+                <i class="fas fa-clock"></i>
+                <span id="sessionTime">00:00</span>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Wrap your existing JS class-based initialization here
+      const dataManager = new MindMateData();
+      dataManager.updateDashboard();
+      dataManager.updateInsights();
+
+      // Any other DOM-specific logic should go here
+    });
+  </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
